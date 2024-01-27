@@ -21,6 +21,10 @@ module "workspace" {
   execution_mode    = each.value.execution_mode
   organization_name = var.organization_name
 
+  vcs_repo = {
+    github_app_installation_id = data.tfe_github_app_installation.this.id
+    identifier                 = each.value.vcs_repo_identifier
+  }
 }
 
 # # Used to avoid destroying to recreate things that was just moved
